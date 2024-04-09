@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Jeopardy.GamePage"
+             xmlns:local="clr-namespace:Jeopardy"
+             x:DataType="local:Game"
+             Title="{Binding Path=DisplayName}" BindingContextChanged="This_BindingContextChanged">
+    <ContentPage.Background>
+        <RadialGradientBrush>
+            <GradientStop Color="#001050"
+                          Offset="0" />
+            <GradientStop Color="Black"
+                          Offset="1" />
+        </RadialGradientBrush>
+    </ContentPage.Background>
+    <Grid x:Name="CategoriesGrid">
+        
+    </Grid>
+</ContentPage>
