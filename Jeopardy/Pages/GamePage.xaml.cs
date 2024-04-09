@@ -1,3 +1,4 @@
+using Jeopardy.Classes;
 using Jeopardy.Controls;
 
 namespace Jeopardy;

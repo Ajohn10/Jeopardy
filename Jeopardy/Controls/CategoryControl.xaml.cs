@@ -1,3 +1,5 @@
+using Jeopardy.Classes;
+
 namespace Jeopardy.Controls;
 
 public partial class CategoryControl : ContentView

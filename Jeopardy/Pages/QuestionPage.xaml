@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Jeopardy.QuestionPage"
-             xmlns:local="clr-namespace:Jeopardy"
+             xmlns:local="clr-namespace:Jeopardy.Classes"
              x:DataType="local:JeopardyQuestion"
              xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Layouts;assembly=CommunityToolkit.Maui"
              Title="Question" BindingContextChanged="This_BindingContextChanged">

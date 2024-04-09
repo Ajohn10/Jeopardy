@@ -1,5 +1,5 @@
-﻿using CsvHelper;
-using CsvHelper.Configuration;
+﻿using CsvHelper.Configuration;
+using CsvHelper;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -7,37 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jeopardy
+namespace Jeopardy.Classes.Games
 {
-    public class Game
+    internal class CSVGame : Game
     {
         /// <summary>
         /// file that is used for game data
         /// </summary>
-        public FileInfo GameFile { get; set; }
+        public FileInfo GameFile { get; }
         /// <summary>
         /// name of game to display to user
         /// </summary>
-        public string DisplayName { get => GameFile == null ? "UNKNOWN" : Path.GetFileNameWithoutExtension(GameFile?.Name); }
-        /// <summary>
-        /// categories within game
-        /// </summary>
-        public List<JeopardyCategory> Categories { get; } = new List<JeopardyCategory>();
+        public override string DisplayName { get => GameFile == null ? "UNKNOWN" : Path.GetFileNameWithoutExtension(GameFile?.Name); }
 
-        /// <summary>
-        /// resets internal memory of game 
-        /// </summary>
-        public void ResetGame()
+        public CSVGame(FileInfo gameFile)
         {
-            Categories.Clear();
+            GameFile = gameFile;
         }
 
-        /// <summary>
-        /// reads game into memory
-        /// </summary>
-        public void ReadGameFile()
+        public override void ReadGameFile()
         {
-            ResetGame();
+            base.ReadGameFile();
 
             var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
             {

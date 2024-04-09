@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Maui.Views;
+using Jeopardy.Classes;
+using Jeopardy.Classes.Games;
 
 namespace Jeopardy;
 
@@ -13,7 +15,7 @@ public partial class MainPage : ContentPage
 			var files = Directory.GetFiles(gamesDirectory).Where(u => u.EndsWith(".jeopardy"));
 
 			foreach (var file in files) {
-				var game = new Game { GameFile = new FileInfo(file) };
+				var game = new CSVGame(new FileInfo(file));
 				var control = new Controls.GameNavigationControl();
 				control.BindingContext = game;
 				GameStack.Add(control);
@@ -21,6 +23,11 @@ public partial class MainPage : ContentPage
 		}
 	}
 
+    /// <summary>
+    /// clicked event for loading game
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private async void LoadGame_Clicked(object sender, EventArgs e)
     {
         try
@@ -31,7 +38,7 @@ public partial class MainPage : ContentPage
                 if (result.FileName.EndsWith(".jeopardy", StringComparison.OrdinalIgnoreCase))
                 {
                     var newGame = new GamePage();
-                    newGame.BindingContext = new Game { GameFile = new FileInfo(result.FullPath) };
+                    newGame.BindingContext = new CSVGame (new FileInfo(result.FullPath));
                     await Navigation.PushAsync(newGame);
                 }
             }
@@ -42,6 +49,11 @@ public partial class MainPage : ContentPage
         }
     }
 
+    /// <summary>
+    /// basic loading for music on main page
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void Music_Loaded(object sender, EventArgs e)
     {
         (sender as MediaElement).Play();

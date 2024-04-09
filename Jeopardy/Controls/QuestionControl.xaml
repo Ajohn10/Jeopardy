@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Jeopardy"
+             xmlns:local="clr-namespace:Jeopardy.Classes"
              x:DataType="local:JeopardyQuestion"
              x:Class="Jeopardy.Controls.QuestionControl">
     <Border x:Name="MainBorder" BackgroundColor="#000066" Stroke="#0000EE" StrokeShape="RoundRectangle 10,10,10,10" Padding="10" Margin="0,0,0,5">

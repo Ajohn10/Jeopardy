@@ -1,3 +1,5 @@
+using Jeopardy.Classes;
+
 namespace Jeopardy;
 
 public partial class QuestionPage : ContentPage
