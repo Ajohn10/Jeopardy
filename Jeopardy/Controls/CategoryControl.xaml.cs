@@ -28,6 +28,5 @@ public partial class CategoryControl : ContentView
             QuestionsGrid.Add(cntrl);
             count++;
         }
-
     }
 }

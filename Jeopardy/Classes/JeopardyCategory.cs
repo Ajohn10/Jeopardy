@@ -10,5 +10,10 @@
         /// questions pertaining to this category
         /// </summary>
         public List<JeopardyQuestion> Questions { get; set; }
+
+        /// <summary>
+        /// if category is complete
+        /// </summary>
+        public bool IsComplete => Questions?.All(u => u.HasOpened) ?? false;
     }
 }

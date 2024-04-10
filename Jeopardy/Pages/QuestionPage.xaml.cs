@@ -18,6 +18,7 @@ public partial class QuestionPage : ContentPage
     /// <param name="e"></param>
     private void Close_Clicked(object sender, EventArgs e)
     {
+        Question.HasOpened = true;
         Navigation.PopAsync();
     }
 

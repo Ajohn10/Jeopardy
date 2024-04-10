@@ -1,3 +1,4 @@
+using CommunityToolkit.Maui.Views;
 using Jeopardy.Classes;
 using Jeopardy.Controls;
 
@@ -35,6 +36,24 @@ public partial class GamePage : ContentPage
         catch (Exception ex)
         {
             DisplayAlert("ERROR", ex.Message, "OK");
+        }
+    }
+
+    /// <summary>
+    /// handle category complete
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (JeopardyGame.IsComplete)
+        {
+            var popup = new SimplePopup();
+            popup.Message = "The game has been completed!";
+            popup.Closed += (s, e) => Navigation.PopAsync();
+            this.ShowPopup(popup);
         }
     }
 }

@@ -10,6 +10,10 @@
         /// categories within game
         /// </summary>
         public List<JeopardyCategory> Categories { get; } = new List<JeopardyCategory>();
+        /// <summary>
+        /// is game complete
+        /// </summary>
+        public bool IsComplete => Categories.All(u => u.IsComplete);
 
         /// <summary>
         /// resets internal memory of game 

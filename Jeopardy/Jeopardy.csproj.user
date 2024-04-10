@@ -9,4 +9,9 @@
     <_LastSelectedProfileId>MSIX-win10-x86.pubxml</_LastSelectedProfileId>
     <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
   </PropertyGroup>
+  <ItemGroup>
+    <MauiXaml Update="Controls\SimplePopup.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+  </ItemGroup>
 </Project>
