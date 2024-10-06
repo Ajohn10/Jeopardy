@@ -21,8 +21,6 @@ public partial class GamePage : ContentPage
             CategoriesGrid.ColumnDefinitions.Clear();
             if (BindingContext == null) return;
 
-            JeopardyGame.ReadGameFile();
-
             for (var i = 0; i < JeopardyGame.Categories.Count; i++)
             {
                 var cntrl = new CategoryControl { BindingContext = JeopardyGame.Categories[i], Margin = new Thickness(5) };

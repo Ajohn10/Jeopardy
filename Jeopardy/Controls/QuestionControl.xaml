@@ -2,14 +2,14 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Jeopardy.Classes"
-             x:DataType="local:JeopardyQuestion"
+             x:DataType="local:Question"
              x:Class="Jeopardy.Controls.QuestionControl">
     <Border x:Name="MainBorder" BackgroundColor="#000066" Stroke="#0000EE" StrokeShape="RoundRectangle 10,10,10,10" Padding="10" Margin="0,0,0,5">
         <Border.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnBorderTapped" />
         </Border.GestureRecognizers>
         <Label 
-            Text="{Binding Path=Weight}"
+            Text="{Binding Path=Template.Weight}"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
             FontSize="Medium"/>

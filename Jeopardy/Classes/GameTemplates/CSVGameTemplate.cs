@@ -2,9 +2,9 @@
 using CsvHelper.Configuration;
 using System.Globalization;
 
-namespace Jeopardy.Classes.Games
+namespace Jeopardy.Classes.GameTemplates
 {
-    internal class CSVGame : Game
+    internal class CSVGameTemplate : GameTemplate
     {
         /// <summary>
         /// file that is used for game data
@@ -15,11 +15,17 @@ namespace Jeopardy.Classes.Games
         /// </summary>
         public override string DisplayName { get => GameFile == null ? "UNKNOWN" : Path.GetFileNameWithoutExtension(GameFile?.Name); }
 
-        public CSVGame(FileInfo gameFile)
+        private bool _hasReadGameFile;
+		public override bool HasReadGameFile => _hasReadGameFile;
+
+		public CSVGameTemplate(FileInfo gameFile)
         {
             GameFile = gameFile;
         }
 
+        /// <summary>
+        /// reads csv game file
+        /// </summary>
         public override void ReadGameFile()
         {
             base.ReadGameFile();
@@ -34,11 +40,11 @@ namespace Jeopardy.Classes.Games
             {
                 using (var csv = new CsvReader(reader, configuration))
                 {
-                    var questions = csv.GetRecords<JeopardyQuestion>().ToList();
+                    var questions = csv.GetRecords<QuestionTemplate>().ToList();
                     var categories = questions.Select(u => u.Category).Distinct().ToList();
                     categories.ForEach(u =>
                     {
-                        Categories.Add(new JeopardyCategory
+                        Categories.Add(new CategoryTemplate
                         {
                             Name = u,
                             Questions = questions.Where(v => v.Category == u).ToList()
@@ -46,6 +52,8 @@ namespace Jeopardy.Classes.Games
                     });
                 }
             }
+
+            _hasReadGameFile = true;
         }
     }
 }

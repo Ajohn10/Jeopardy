@@ -1,6 +1,6 @@
 ﻿namespace Jeopardy.Classes
 {
-    public class JeopardyCategory
+    public class CategoryTemplate
     {
         /// <summary>
         /// display name of category
@@ -9,11 +9,6 @@
         /// <summary>
         /// questions pertaining to this category
         /// </summary>
-        public List<JeopardyQuestion> Questions { get; set; }
-
-        /// <summary>
-        /// if category is complete
-        /// </summary>
-        public bool IsComplete => Questions?.All(u => u.HasOpened) ?? false;
+        public List<QuestionTemplate> Questions { get; set; }
     }
 }

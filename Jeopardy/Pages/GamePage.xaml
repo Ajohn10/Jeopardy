@@ -4,7 +4,7 @@
              x:Class="Jeopardy.GamePage"
              xmlns:local="clr-namespace:Jeopardy.Classes"
              x:DataType="local:Game"
-             Title="{Binding Path=DisplayName}" BindingContextChanged="This_BindingContextChanged">
+             Title="{Binding Path=Template.DisplayName}" BindingContextChanged="This_BindingContextChanged">
     <ContentPage.Background>
         <RadialGradientBrush>
             <GradientStop Color="#001050"

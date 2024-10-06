@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Maui.Views;
-using Jeopardy.Classes.Games;
+using Jeopardy.Classes.GameTemplates;
 
 namespace Jeopardy;
 
@@ -8,20 +8,31 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-        var gamesDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Games");
-        if (Directory.Exists(gamesDirectory))
-        {
-            var files = Directory.GetFiles(gamesDirectory).Where(u => u.EndsWith(".jeopardy"));
+
+		foreach (var game in GetAvailableGames())
+		{
+			var control = new Controls.GameNavigationControl();
+			control.BindingContext = game;
+			GameStack.Add(control);
+		}
+	}
+
+    /// <summary>
+    /// gets all games
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerable<Jeopardy.Classes.GameTemplate> GetAvailableGames()
+    {
+		// local csv games
+		var gamesDirectory = Path.Combine(FileSystem.AppDataDirectory, "Games");
+		if (Directory.Exists(gamesDirectory))
+		{
+			var files = Directory.GetFiles(gamesDirectory).Where(u => u.EndsWith(".jeopardy"));
 
             foreach (var file in files)
-            {
-                var game = new CSVGame(new FileInfo(file));
-                var control = new Controls.GameNavigationControl();
-                control.BindingContext = game;
-                GameStack.Add(control);
-            }
-        }
-    }
+                yield return new CSVGameTemplate(new FileInfo(file));
+		}
+	}
 
     /// <summary>
     /// clicked event for loading game
@@ -38,7 +49,7 @@ public partial class MainPage : ContentPage
                 if (result.FileName.EndsWith(".jeopardy", StringComparison.OrdinalIgnoreCase))
                 {
                     var newGame = new GamePage();
-                    newGame.BindingContext = new CSVGame(new FileInfo(result.FullPath));
+                    newGame.BindingContext = new CSVGameTemplate(new FileInfo(result.FullPath));
                     await Navigation.PushAsync(newGame);
                 }
             }

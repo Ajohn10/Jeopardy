@@ -4,7 +4,7 @@ namespace Jeopardy;
 
 public partial class QuestionPage : ContentPage
 {
-    private JeopardyQuestion Question => BindingContext as JeopardyQuestion;
+    private Question Question => BindingContext as Question;
 
     public QuestionPage()
     {
@@ -18,7 +18,7 @@ public partial class QuestionPage : ContentPage
     /// <param name="e"></param>
     private void Close_Clicked(object sender, EventArgs e)
     {
-        Question.HasOpened = true;
+        Question.IsComplete = true;
         Navigation.PopAsync();
     }
 
@@ -26,7 +26,7 @@ public partial class QuestionPage : ContentPage
     {
         if (this.BindingContext == null) return;
 
-        if (string.IsNullOrEmpty(Question.URL)) image.IsVisible = false;
+        if (string.IsNullOrEmpty(Question.Template.URL)) image.IsVisible = false;
         else image.IsVisible = true;
     }
 }

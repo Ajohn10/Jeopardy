@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Jeopardy.QuestionPage"
              xmlns:local="clr-namespace:Jeopardy.Classes"
-             x:DataType="local:JeopardyQuestion"
+             x:DataType="local:Question"
              xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Layouts;assembly=CommunityToolkit.Maui"
              Title="Question" BindingContextChanged="This_BindingContextChanged">
     <ContentPage.Background>
@@ -15,9 +15,9 @@
         </RadialGradientBrush>
     </ContentPage.Background>
     <toolkit:DockLayout>
-        <Label toolkit:DockLayout.DockPosition="Top" Text="{Binding Path=Weight}" FontSize="Medium" HorizontalOptions="Center" />
+        <Label toolkit:DockLayout.DockPosition="Top" Text="{Binding Path=Template.Weight}" FontSize="Medium" HorizontalOptions="Center" />
         <Button Margin="0,5,0,0" toolkit:DockLayout.DockPosition="Bottom" Text="Close" Clicked="Close_Clicked"></Button>
-        <Image x:Name="image" Source="{Binding Path=URL}" IsVisible="false"></Image>
-        <Label Text="{Binding Path=Question}" HorizontalOptions="Center" VerticalOptions="Center"  HorizontalTextAlignment="Center" Margin="30,0,30,0" FontSize="Large"/>
+        <Image x:Name="image" Source="{Binding Path=Template.URL}" IsVisible="false"></Image>
+        <Label Text="{Binding Path=Template.Question}" HorizontalOptions="Center" VerticalOptions="Center"  HorizontalTextAlignment="Center" Margin="30,0,30,0" FontSize="Large"/>
     </toolkit:DockLayout>
 </ContentPage>

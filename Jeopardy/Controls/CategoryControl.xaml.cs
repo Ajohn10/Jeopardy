@@ -4,7 +4,7 @@ namespace Jeopardy.Controls;
 
 public partial class CategoryControl : ContentView
 {
-    private JeopardyCategory Category => BindingContext as JeopardyCategory;
+    private Category Category => BindingContext as Category;
 
     public CategoryControl()
     {
@@ -18,7 +18,7 @@ public partial class CategoryControl : ContentView
         if (BindingContext == null) return;
 
         int count = 0;
-        foreach (var question in Category.Questions.OrderBy(u => u.Weight))
+        foreach (var question in Category.Questions.OrderBy(u => u.Template.Weight))
         {
             var cntrl = new QuestionControl { BindingContext = question };
             cntrl.SetValue(Grid.RowProperty, count);

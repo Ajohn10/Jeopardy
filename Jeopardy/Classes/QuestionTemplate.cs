@@ -2,7 +2,7 @@
 
 namespace Jeopardy.Classes
 {
-    public class JeopardyQuestion
+    public class QuestionTemplate
     {
         /// <summary>
         /// category of question
@@ -29,10 +29,5 @@ namespace Jeopardy.Classes
         /// </summary>
         [Index(4)]
         public string URL { get; set; }
-        /// <summary>
-        /// whether or not the question has been opened
-        /// </summary>
-        [Ignore]
-        public bool HasOpened { get; set; }
     }
 }

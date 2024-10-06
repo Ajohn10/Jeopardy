@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Jeopardy.Classes"
              x:Class="Jeopardy.Controls.CategoryControl"
-             x:DataType="local:JeopardyCategory"
+             x:DataType="local:Category"
              xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Layouts;assembly=CommunityToolkit.Maui"
              BindingContextChanged="This_BindingContextChanged">
     <toolkit:DockLayout>
         <Border toolkit:DockLayout.DockPosition="Top" BackgroundColor="#000044" Stroke="#0000EE" StrokeShape="RoundRectangle 10,10,10,10" Padding="10" MinimumHeightRequest="100">
             <Label 
-            Text="{Binding Path=Name}"
+            Text="{Binding Path=Template.Name}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" FontSize="Large" />
         </Border>
